@@ -21,7 +21,8 @@ def schedule_job(name, task, interval, timeout):
     Info = namedtuple('Info', ['job_id', 'timeout'])
     job_id = str(uuid4())
     info = Info(job_id=job_id, timeout=timeout)
-    job = sched.add_interval_job(task, name=name, args=[info], **interval)
+    job = sched.add_interval_job(task, name=name,
+                                 args=[info], **interval)
     job.id = job_id
     return job_id
 
