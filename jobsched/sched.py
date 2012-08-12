@@ -1,5 +1,3 @@
-#-*- coding: utf-8 -*-
-from apscheduler.job import Job
 from apscheduler.scheduler import Scheduler
 from collections import namedtuple
 from uuid import uuid4
@@ -19,16 +17,18 @@ def list_jobs():
     return map(job_info, sched.get_jobs())
 
 
-def schedule_job(task, interval, timeout):
+def schedule_job(name, task, interval, timeout):
     Info = namedtuple('Info', ['job_id', 'timeout'])
-    job_id = uuid4()
+    job_id = str(uuid4())
     info = Info(job_id=job_id, timeout=timeout)
-    job = sched.add_interval_job(task, args=[info], **interval)
+    job = sched.add_interval_job(task, name=name, args=[info], **interval)
     job.id = job_id
     return job_id
 
 
 def unschedule_job(uuid):
-    job = Job()
-    job.id = uuid
-    return sched.unchedule_job(job)
+    for job in sched.get_jobs():
+        if uuid == job.id:
+            sched.unschedule_job(job)
+            return True
+    return False
