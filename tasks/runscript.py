@@ -1,4 +1,4 @@
-from jobsched.jobs.watchdog import Watchdog
+from jobsched.watchdog import watchdog
 
 import os
 import subprocess
@@ -6,10 +6,10 @@ import sys
 
 
 class RunScript(object):
-    def __init__(self, script):
+    def __init__(self, script=None):
         self.script = os.path.abspath(script)
 
-    @Watchdog
+    @watchdog()
     def __call__(self, info):
         if os.path.exists(self.script):
             script = os.path.abspath(self.script)

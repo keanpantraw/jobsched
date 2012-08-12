@@ -7,7 +7,6 @@ from flask import make_response
 from itertools import ifilter
 from urlparse import urljoin
 
-from jobsched.catalog import catalog
 from jobsched import sched
 
 bp = Blueprint("API", __name__)
@@ -31,6 +30,8 @@ def get_job(uuid):
 @bp.route('/jobs', methods=['POST'])
 def schedule_job():
     name, task, interval = parse_args()
+
+    catalog = current_app.config.get('catalog', {})
 
     if task in catalog:
         interval = filter_interval_args(interval)
@@ -97,5 +98,5 @@ def unschedule_job(uuid):
 @bp.route('/catalog')
 def job_catalog():
     return jsonify({
-                    "tasks": catalog.keys()
+                    "tasks": current_app.config.get('catalog', {}).keys()
                    })
