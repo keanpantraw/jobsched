@@ -1,0 +1,9 @@
+INFO:apscheduler.threadpool:Started thread pool with 0 core threads and 20 maximum threads
+INFO:apscheduler.scheduler:Scheduler started
+INFO:werkzeug: * Running on http://0.0.0.0:58631/
+INFO:werkzeug: * Restarting with reloader
+INFO:apscheduler.threadpool:Started thread pool with 0 core threads and 20 maximum threads
+INFO:apscheduler.scheduler:Scheduler started
+INFO:werkzeug:127.0.0.1 - - [11/Aug/2012 23:06:24] "GET /jobs HTTP/1.1" 200 -
+INFO:root:Shutting down thread pool
+INFO:root:Shutting down thread pool
