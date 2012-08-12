@@ -1,6 +1,5 @@
 #!/bin/bash
 echo "before fall asleep"
-sleep 20
 echo "Nice morning!"
 DIR=~/results
 mkdir -p "$DIR"

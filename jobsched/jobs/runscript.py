@@ -14,10 +14,9 @@ class RunScript(object):
         if os.path.exists(self.script):
             script = os.path.abspath(self.script)
             p = subprocess.Popen([script], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-            stdout, = p.communicate()
             while p.poll() is None:
-                sys.stdout.write(stdout.readline())
-            sys.stdout(stdout.read())
+                sys.stdout.write(p.stdout.readline())
+            sys.stdout.write(p.stdout.read())
             if p.returncode:
                 raise RuntimeError("Script %s terminated "
                                    "with status %d" % (script, p.returncode))
