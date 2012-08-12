@@ -1,8 +1,7 @@
 #!/bin/bash
-echo "huj"
+echo "before fall asleep"
 sleep 20
-echo "her"
-echo "da vsem poher"
+echo "Nice morning!"
 DIR=~/results
 mkdir -p "$DIR"
 LAST=`ls "$DIR" |python -c 'import sys;l=sys.stdin.read();print max(map(int, l.split()))'`
