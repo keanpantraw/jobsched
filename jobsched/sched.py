@@ -7,7 +7,6 @@ sched = Scheduler()
 
 def list_jobs():
     def job_info(job):
-        print job.id
         return {
                 "id": str(job.id),
                 "name": job.name,
