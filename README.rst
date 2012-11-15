@@ -18,7 +18,7 @@ Easiest way to play with *Jobsched* (works if you have virtualenv):
 * ``virtualenv shedenv``
 * ``source schedenv/bin/activate``
 * ``pip install -r requirements.txt``
-* ``./debug.sh``
+* ``./debug.bash``
 
 Now you have *Jobsched*, ready for scheduling!
 
